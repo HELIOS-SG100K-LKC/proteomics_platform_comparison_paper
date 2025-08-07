@@ -58,9 +58,6 @@ corrplot(cor(M, method = "spearman", use = "pairwise.complete.obs")[c(6,1:3),-c(
 #Combined
 corrplot(rbind(cor(A, method = "spearman", use = "pairwise.complete.obs")[c(6,1:3),-c(1:3)], rep(0,28), cor(C, method = "spearman", use = "pairwise.complete.obs")[c(6,1:3),-c(1:3)], rep(0,28), cor(I, method = "spearman", use = "pairwise.complete.obs")[c(6,1:3),-c(1:3)], rep(0,28), cor(M, method = "spearman", use = "pairwise.complete.obs")[c(6,1:3),-c(1:3)]), method = "shade", addCoef.col = "black", tl.cex = 1.25, cl.pos = "n")
 
-#The Whole Correlation Matrix
-corrplot(cor(A, method = "spearman", use = "pairwise.complete.obs"), method = "shade", addCoef.col = "black", tl.cex = 1.25, cl.pos = "n")
-
 rm(A)
 rm(C, I, M)
 
@@ -285,4 +282,5 @@ rm(mycolors)
 
 rm(ANML_Scaling_Factors, Phenotype)
 gc()
+
 
