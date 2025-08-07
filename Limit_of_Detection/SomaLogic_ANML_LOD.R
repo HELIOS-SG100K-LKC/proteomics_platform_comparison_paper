@@ -23,6 +23,11 @@ Label <- Label[which(Label$SampleType == "Sample"),]
 ProtMatrix <- log2(ProtMatrix)
 min(ProtMatrix)
 
+#500
+Index <- union(which(Label$tech_rep %in% c(2:3)), which(Label$bio_rep_id == "Y"))
+ProtMatrix <- ProtMatrix[-Index,]
+Label <- Label[-Index,]
+rm(Index)
 
 #LOD Calculation
 
@@ -33,20 +38,9 @@ for (i in 1:10675) {
 }
 rm(i)
 
-#Official LOD for Each Protein
-library(readxl)
-LOD_Official <- read_excel("SomaScan_11K_Annotated_Content.xlsx")
-LOD_Official <- as.data.frame(LOD_Official[-c(1:4),c(1,10)])
-colnames(LOD_Official) <- c("SeqID","LOD")
-rownames(LOD_Official) <- LOD_Official$SeqID
-
 #Comparison
 LOD <- data.frame(SeqID = Analyte_Annotation$SeqId, LOD)
 rownames(LOD) <- LOD$SeqID
-LOD_Official <- LOD_Official[rownames(LOD),]
-LOD_Official$LOD <- as.numeric(LOD_Official$LOD)
-cor(LOD$LOD, LOD_Official$LOD, method = "pearson")
-rm(LOD_Official)
 
 #Proportion below LOD
 rownames(Analyte_Annotation) <- Analyte_Annotation$SeqId
@@ -77,8 +71,8 @@ rm(i)
 rm(LOD_TF)
 
 #Sample
-Class <- 1:800
-Class[1:800] <- ""
+Class <- 1:500
+Class[1:500] <- ""
 Data <- data.frame(Rate_LoD_Sample = Rate_LoD_Sample, Class = Class)
 Data$Class <- as.factor(Data$Class)
 library(ggplot2)
@@ -257,14 +251,14 @@ ggplot(data = Data, aes(x = Class, y = Rate_LoD_Sample, fill = Class, color = Cl
   ylim(0,0.9) +
   labs(y = "Sample missingness", x = "Different sets")
 
-Data$Normalization <- rep("ANML", 2400)
+Data$Normalization <- rep("ANML", 1500)
 write.csv(Data, "Sample_Missingness_ANML_Sets.csv", row.names = F)
 
 rm(Class)
 rm(Data)
 
 #Protein
-Data <- data.frame(Rate = c(0.0417004,0.03042328,0.04066917), Set = c("Set 1","Set 2","Set 3"))
+Data <- data.frame(Rate = c(0.04109312,0.02954145,0.04038073), Set = c("Set 1","Set 2","Set 3"))
 ggplot(Data, aes(x = Set, y = Rate, fill = Set, color = Set)) +
   geom_bar(stat = "identity", position = "dodge") +
   theme_classic() +
@@ -414,7 +408,7 @@ ggplot(data = Data, aes(x = Class, y = Rate_LoD_Sample, fill = Class, color = Cl
   ylim(0,0.75) +
   labs(y = "Sample missingness", x = "Dilution series")
 
-Data$Normalization <- rep("ANML", 2400)
+Data$Normalization <- rep("ANML", 1500)
 write.csv(Data, "Sample_Missingness_ANML_Dilution.csv", row.names = F)
 
 rm(Class)
@@ -425,7 +419,7 @@ rm(Rate_LoD_Sample2)
 rm(Rate_LoD_Sample3)
 
 #Protein
-Data <- data.frame(Rate = c(0.04688593,0.006349206,0.009478673), Set = c("1:5","1:200","1:20000"))
+Data <- data.frame(Rate = c(0.04618614,0.006349206,0.009478673), Set = c("1:5","1:200","1:20000"))
 ggplot(Data, aes(x = Set, y = Rate, fill = Set, color = Set)) +
   geom_bar(stat = "identity", position = "dodge") +
   theme_classic() +

@@ -15,6 +15,11 @@ rm(Dat)
 Protein_Annotation <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/4_Thermo_Fisher_Preprocessing/Thermo_Fisher_Protein_Annotation_All.csv")
 rownames(Protein_Annotation) <- Protein_Annotation$ProteinID
 
+#46
+Index <- which(Label$tech_rep == 2)
+ProtMatrix <- ProtMatrix[-Index,]
+Label <- Label[-Index,]
+rm(Index)
 
 #Missingness Calculation
 
@@ -37,8 +42,8 @@ for (i in 1:ncol(ProtMatrix)) {
 rm(i)
 
 #Sample
-Class <- 1:95
-Class[1:95] <- ""
+Class <- 1:46
+Class[1:46] <- ""
 Data <- data.frame(Missing_Rate_Sample = Missing_Rate_Sample, Class = Class)
 Data$Class <- as.factor(Data$Class)
 library(ggplot2)

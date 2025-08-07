@@ -19,6 +19,11 @@ ProtMatrix_Negative_Control <- ProtMatrix[which(Label$SampleType == "NEGATIVE_CO
 ProtMatrix <- ProtMatrix[which(Label$SampleType == "SAMPLE"),]
 Label <- Label[which(Label$SampleType == "SAMPLE"),]
 
+#216
+Index <- union(which(Label$tech_rep %in% c(2:3)), which(Label$bio_rep_id == "Y"))
+ProtMatrix <- ProtMatrix[-Index,]
+Label <- Label[-Index,]
+rm(Index)
 
 #Limit of Detection (LoD) Analysis
 
@@ -44,28 +49,9 @@ ProtMatrix_LOD <- ProtMatrix_LOD[Label$SampleID.1, colnames(ProtMatrix)]
 rm(my_NPX_data)
 gc()
 
-#Official LOD for Each Protein
-library(readxl)
-LOD_Official <- read_excel("olink-explore-ht-validation-data-results.xlsx", sheet = 2)
-LOD_Official <- as.data.frame(LOD_Official[-1,c(1,6)])
-colnames(LOD_Official) <- c("UNIPROT","LOD")
-LOD_Official <- LOD_Official[match(unique(LOD_Official$UNIPROT), LOD_Official$UNIPROT),]
-rownames(LOD_Official) <- LOD_Official$UNIPROT
-
 #Comparison
 LOD <- apply(ProtMatrix_LOD, 2, median)
 LOD <- data.frame(OlinkID = Assay_Annotation$OlinkID, LOD)
-
-LOD2 <- data.frame(UniProt = Assay_Annotation$UniProt, LOD$LOD)
-LOD2 <- LOD2[match(unique(LOD2$UniProt), LOD2$UniProt),]
-rownames(LOD2) <- LOD2$UniProt
-
-LOD_Official <- LOD_Official[intersect(rownames(LOD2), LOD_Official$UNIPROT),]
-LOD_Official$LOD <- as.numeric(LOD_Official$LOD)
-LOD2 <- LOD2[rownames(LOD_Official),]
-cor(LOD2$LOD, LOD_Official$LOD, method = "pearson", use = "pairwise.complete.obs")
-rm(LOD_Official)
-rm(LOD2)
 
 #Proportion below LOD
 LOD_TF <- ProtMatrix < ProtMatrix_LOD
@@ -95,8 +81,8 @@ write.csv(LOD, "Olink_LoD.csv", row.names = F)
 rm(LOD)
 
 #Sample
-Class <- 1:514
-Class[1:514] <- ""
+Class <- 1:216
+Class[1:216] <- ""
 Data <- data.frame(Rate_LoD_Sample = Rate_LoD_Sample, Class = Class)
 Data$Class <- as.factor(Data$Class)
 library(ggplot2)
@@ -285,7 +271,7 @@ rm(Class)
 rm(Data)
 
 #Protein
-Data <- data.frame(Rate = c(0.1839161,0.5236749,0.8710938), Set = c("Set 1","Set 2","Set 3"))
+Data <- data.frame(Rate = c(0.1818182,0.5215548,0.8703125), Set = c("Set 1","Set 2","Set 3"))
 ggplot(Data, aes(x = Set, y = Rate, fill = Set, color = Set)) +
   geom_bar(stat = "identity", position = "dodge") +
   theme_classic() +
@@ -517,7 +503,7 @@ rm(Rate_LoD_Sample4)
 rm(Rate_LoD_Sample5)
 
 #Protein
-Data <- data.frame(Rate = c(0.723932,0.08605852,0.06666667,0.0530303,0.1029412), Set = c("1:1","1:10","1:100","1:1000","1:100000"))
+Data <- data.frame(Rate = c(0.7227836,0.08261618,0.06666667,0.0530303,0.08823529), Set = c("1:1","1:10","1:100","1:1000","1:100000"))
 ggplot(Data, aes(x = Set, y = Rate, fill = Set, color = Set)) +
   geom_bar(stat = "identity", position = "dodge") +
   theme_classic() +

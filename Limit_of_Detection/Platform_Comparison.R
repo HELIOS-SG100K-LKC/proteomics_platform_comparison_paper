@@ -28,6 +28,12 @@ Label <- Label[which(Label$SampleType == "Sample"),]
 ProtMatrix <- log2(ProtMatrix)
 min(ProtMatrix)
 
+#500
+Index <- union(which(Label$tech_rep %in% c(2:3)), which(Label$bio_rep_id == "Y"))
+ProtMatrix <- ProtMatrix[-Index,]
+Label <- Label[-Index,]
+rm(Index)
+
 #LOD Calculation
 
 #LOD for Each Protein
@@ -146,6 +152,12 @@ Label <- Label[which(Label$SampleType == "Sample"),]
 ProtMatrix <- log2(ProtMatrix)
 min(ProtMatrix)
 
+#500
+Index <- union(which(Label$tech_rep %in% c(2:3)), which(Label$bio_rep_id == "Y"))
+ProtMatrix <- ProtMatrix[-Index,]
+Label <- Label[-Index,]
+rm(Index)
+
 #LOD Calculation
 
 #LOD for Each Protein
@@ -260,6 +272,12 @@ ProtMatrix_Negative_Control <- ProtMatrix[which(Label$SampleType == "NEGATIVE_CO
 ProtMatrix <- ProtMatrix[which(Label$SampleType == "SAMPLE"),]
 Label <- Label[which(Label$SampleType == "SAMPLE"),]
 
+#216
+Index <- union(which(Label$tech_rep %in% c(2:3)), which(Label$bio_rep_id == "Y"))
+ProtMatrix <- ProtMatrix[-Index,]
+Label <- Label[-Index,]
+rm(Index)
+
 #Limit of Detection (LoD) Analysis
 
 #Package
@@ -373,6 +391,12 @@ rm(Dat)
 #Protein Annotation
 Protein_Annotation <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/4_Thermo_Fisher_Preprocessing/Thermo_Fisher_Protein_Annotation_All.csv")
 rownames(Protein_Annotation) <- Protein_Annotation$ProteinID
+
+#46
+Index <- which(Label$tech_rep %in% 2)
+ProtMatrix <- ProtMatrix[-Index,]
+Label <- Label[-Index,]
+rm(Index)
 
 #Missingness Calculation
 
