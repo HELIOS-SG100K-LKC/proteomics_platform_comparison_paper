@@ -14,6 +14,10 @@ rm(Dat)
 Analyte_Annotation_SomaLogic <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/5_Common_Samples_Common_Proteins/1_Preprocessing/Somalogic_Analyte_Annotation_All_UniProt_pre-ANML.csv")
 rownames(Analyte_Annotation_SomaLogic) <- Analyte_Annotation_SomaLogic$UniProt
 
+#T12
+ProtMatrix_SomaLogic <- ProtMatrix_SomaLogic[which(Label_SomaLogic$tech_rep %in% c(1,2)),]
+Label_SomaLogic <- Label_SomaLogic[which(Label_SomaLogic$tech_rep %in% c(1,2)),]
+
 #SomaLogic ANML
 
 #SomaLogic Data
@@ -26,6 +30,10 @@ rm(Dat)
 #Analyte Annotation
 Analyte_Annotation_SomaLogic2 <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/5_Common_Samples_Common_Proteins/1_Preprocessing/Somalogic_Analyte_Annotation_All_UniProt.csv")
 rownames(Analyte_Annotation_SomaLogic2) <- Analyte_Annotation_SomaLogic2$UniProt
+
+#T12
+ProtMatrix_SomaLogic2 <- ProtMatrix_SomaLogic2[which(Label_SomaLogic2$tech_rep %in% c(1,2)),]
+Label_SomaLogic2 <- Label_SomaLogic2[which(Label_SomaLogic2$tech_rep %in% c(1,2)),]
 
 #Olink
 
@@ -40,6 +48,10 @@ rm(Dat)
 Assay_Annotation_Olink <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/5_Common_Samples_Common_Proteins/1_Preprocessing/Olink_Assay_Annotation_All_UniProt.csv")
 rownames(Assay_Annotation_Olink) <- Assay_Annotation_Olink$UniProt
 
+#T12
+ProtMatrix_Olink <- ProtMatrix_Olink[which(Label_Olink$tech_rep %in% c(1,2)),]
+Label_Olink <- Label_Olink[which(Label_Olink$tech_rep %in% c(1,2)),]
+
 #Thermo Fisher
 
 #Thermo Fisher Data
@@ -52,6 +64,12 @@ rm(Dat)
 #Protein Annotation
 Protein_Annotation_TF <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/5_Common_Samples_Common_Proteins/1_Preprocessing/Thermo_Fisher_Protein_Annotation_All_UniProt.csv")
 rownames(Protein_Annotation_TF) <- Protein_Annotation_TF$UniProt
+
+#T12
+A <- as.data.frame(table(Label_TF$FREG0_PID))
+ProtMatrix_TF <- ProtMatrix_TF[which(Label_TF$FREG0_PID %in% A$Var1[which(A$Freq == 2)]),]
+Label_TF <- Label_TF[which(Label_TF$FREG0_PID %in% A$Var1[which(A$Freq == 2)]),]
+rm(A)
 
 #Common Samples
 SampleID_SomaLogic <- paste(Label_SomaLogic$FREG0_PID, Label_SomaLogic$tech_rep, sep = "_")
