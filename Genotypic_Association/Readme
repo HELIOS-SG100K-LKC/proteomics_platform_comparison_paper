@@ -1,1 +1,5 @@
-Genotypic association for each platform
+Code used for: 
+1. GWAS analysis for SomaScan11K (pre-ANML and ANML) and OlinkHT using 216 common samples and all analytes in the corresponding platform. 
+2. cis- and trans- pqtl annotation of associations below p<5e-08. 
+3. Fine-mapping of significant cis-loci. 
+4. cis-eqtl lookups in eQTLGen data. 
