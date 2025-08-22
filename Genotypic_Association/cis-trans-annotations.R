@@ -80,3 +80,17 @@ nrow(pqtl_trans) #total trans pqtls
 length(unique(pqtl_trans$UniProt)) #total uniprots with a trans pqtl
 
 
+# get list of uniprot-analyte pairs with maximum number of qtl for that uniprot
+pqtl_cis %>% 
+  group_by(UniProt, analyte_ID) %>% 
+  summarise(snps = length(unique(SNP))) %>% 
+  arrange(desc(snps)) %>% 
+  slice_head(n=1) %>% 
+  ungroup() -> pqtl_cis_trim
+
+
+# save file
+# write.table(pqtl_cis_trim, "cis-pQTL_unique-uniprot-analyte-pair.txt", sep = "\t", quote = FALSE, row.names = FALSE)
+
+
+
