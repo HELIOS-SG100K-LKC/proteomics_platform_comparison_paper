@@ -17,6 +17,7 @@ df <- fread("pQTLS_gene-annot_all_p5e08.txt",
 colnames(df)[1] <- "ID"
 length(unique(df$ID))
 
+
 # read platform specific annotation file
 annot <- fread("Annotation_All.csv", 
                  header = TRUE, stringsAsFactors = FALSE, data.table = FALSE)
@@ -59,12 +60,14 @@ df_annot_ensembl %>%
 # save file
 # write.table(df_annot_ensembl_pqtl, "pQTLS_gene-annot_all_p5e08_annotated.txt", sep = "\t", quote = FALSE, row.names = FALSE)
 
+
 # number of cis associations
 df_annot_ensembl_pqtl %>% 
   filter(P < 5e-08  & pqtl == "cis") -> pqtl_cis
 
 nrow(pqtl_cis) #total cis pqtls
 length(unique(pqtl_cis$UniProt)) #total uniprots with a cis pqtl
+
 
 # number of trans association
 n <- length(unique(annot$UniProt))
@@ -75,4 +78,5 @@ df_annot_ensembl_pqtl %>%
 
 nrow(pqtl_trans) #total trans pqtls
 length(unique(pqtl_trans$UniProt)) #total uniprots with a trans pqtl
+
 
