@@ -10,7 +10,7 @@ Sys.setenv(LANGUAGE = "en")
 library(SomaDataIO)
 
 #Data Loading
-my_adat <- read_adat("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/2_SomaLogic_pre-anml_Preprocessing/SS-2453461_v5.0_EDTAPlasma.hybNorm.medNormInt.plateScale.calibrate.anmlQC.qcCheck.20240521.adat")
+my_adat <- read_adat("SS-2453461_v5.0_EDTAPlasma.hybNorm.medNormInt.plateScale.calibrate.anmlQC.qcCheck.20240521.adat")
 
 
 #Simulated Data
@@ -21,7 +21,7 @@ Simulation <- Simulation[,-1]
 #Processed pre-ANML Data
 
 #SomaLogic Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/2_SomaLogic_pre-anml_Preprocessing/Somalogic_Merged_All.csv")
+Dat <- read.csv("SomaLogic_pre-anml_Preprocessing/Somalogic_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 
 #Remove Control Samples
@@ -73,3 +73,4 @@ sum(abs(as.matrix(Simulation) - as.matrix(my_adat)))
 rm(my_adat)
 rm(Simulation)
 rm(Dat)
+
