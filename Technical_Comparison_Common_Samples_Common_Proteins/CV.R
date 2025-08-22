@@ -4,53 +4,53 @@
 #SomaLogic pre-ANML
 
 #SomaLogic Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/5_Common_Samples_Common_Proteins/1_Preprocessing/Somalogic_Merged_All_UniProt_pre-ANML.csv")
+Dat <- read.csv("Somalogic_Merged_All_UniProt_pre-ANML.csv")
 rownames(Dat) <- Dat$UniqueID
 Label_SomaLogic <- Dat[,c(1:20)]
 ProtMatrix_SomaLogic <- Dat[,c(21:ncol(Dat))]
 rm(Dat)
 
 #Analyte Annotation
-Analyte_Annotation_SomaLogic <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/5_Common_Samples_Common_Proteins/1_Preprocessing/Somalogic_Analyte_Annotation_All_UniProt_pre-ANML.csv")
+Analyte_Annotation_SomaLogic <- read.csv("Somalogic_Analyte_Annotation_All_UniProt_pre-ANML.csv")
 rownames(Analyte_Annotation_SomaLogic) <- Analyte_Annotation_SomaLogic$UniProt
 
 #SomaLogic ANML
 
 #SomaLogic Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/5_Common_Samples_Common_Proteins/1_Preprocessing/Somalogic_Merged_All_UniProt.csv")
+Dat <- read.csv("Somalogic_Merged_All_UniProt.csv")
 rownames(Dat) <- Dat$UniqueID
 Label_SomaLogic2 <- Dat[,c(1:20)]
 ProtMatrix_SomaLogic2 <- Dat[,c(21:ncol(Dat))]
 rm(Dat)
 
 #Analyte Annotation
-Analyte_Annotation_SomaLogic2 <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/5_Common_Samples_Common_Proteins/1_Preprocessing/Somalogic_Analyte_Annotation_All_UniProt.csv")
+Analyte_Annotation_SomaLogic2 <- read.csv("Somalogic_Analyte_Annotation_All_UniProt.csv")
 rownames(Analyte_Annotation_SomaLogic2) <- Analyte_Annotation_SomaLogic2$UniProt
 
 #Olink
 
 #Olink Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/5_Common_Samples_Common_Proteins/1_Preprocessing/Olink_Merged_All_UniProt.csv")
+Dat <- read.csv("Olink_Merged_All_UniProt.csv")
 rownames(Dat) <- Dat$UniqueID
 Label_Olink <- Dat[,c(1:19)]
 ProtMatrix_Olink <- Dat[,c(20:ncol(Dat))]
 rm(Dat)
 
 #Assay Annotation
-Assay_Annotation_Olink <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/5_Common_Samples_Common_Proteins/1_Preprocessing/Olink_Assay_Annotation_All_UniProt.csv")
+Assay_Annotation_Olink <- read.csv("Olink_Assay_Annotation_All_UniProt.csv")
 rownames(Assay_Annotation_Olink) <- Assay_Annotation_Olink$UniProt
 
 #Thermo Fisher
 
 #Thermo Fisher Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/5_Common_Samples_Common_Proteins/1_Preprocessing/Thermo_Fisher_Merged_All_UniProt_Imputed.csv")
+Dat <- read.csv("Thermo_Fisher_Merged_All_UniProt_Imputed.csv")
 rownames(Dat) <- Dat$biosample_id
 Label_TF <- Dat[,c(1:10)]
 ProtMatrix_TF <- Dat[,c(11:ncol(Dat))]
 rm(Dat)
 
 #Protein Annotation
-Protein_Annotation_TF <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/5_Common_Samples_Common_Proteins/1_Preprocessing/Thermo_Fisher_Protein_Annotation_All_UniProt.csv")
+Protein_Annotation_TF <- read.csv("Thermo_Fisher_Protein_Annotation_All_UniProt.csv")
 rownames(Protein_Annotation_TF) <- Protein_Annotation_TF$UniProt
 
 #Common Samples
@@ -184,4 +184,5 @@ rm(Protein_Annotation_TF)
 rm(ID)
 rm(CV)
 gc()
+
 
