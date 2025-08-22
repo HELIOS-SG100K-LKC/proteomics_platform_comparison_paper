@@ -60,14 +60,14 @@ Label_SomaLogic <- Label_SomaLogic[which(Label_SomaLogic$SampleType == "Sample")
 ProtMatrix_SomaLogic <- log2(ProtMatrix_SomaLogic)
 
 #Analyte Annotation
-Analyte_Annotation_SomaLogic <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/1_SomaLogic_anml_Preprocessing/Somalogic_Analyte_Annotation_All.csv")
+Analyte_Annotation_SomaLogic <- read.csv("Somalogic_Analyte_Annotation_All.csv")
 rownames(Analyte_Annotation_SomaLogic) <- Analyte_Annotation_SomaLogic$SeqId
 
 colnames(ProtMatrix_SomaLogic) <- Analyte_Annotation_SomaLogic$SeqId
 rm(Analyte_Annotation_SomaLogic)
 
 #LoD
-LoD <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/3_Limit_of_Detection/1_SomaLogic_LoD/Somalogic_LOD.csv")
+LoD <- read.csv("Somalogic_LOD.csv")
 
 library(dplyr)
 df_unique <- LoD %>%
@@ -94,7 +94,7 @@ rm(ProtMatrix_SomaLogic)
 #Olink
 
 #Olink Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/3_Olink_Intensity_Preprocessing/Olink_Merged_All.csv")
+Dat <- read.csv("Olink_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label_Olink <- Dat[,c(1:19)]
 ProtMatrix_Olink <- Dat[,c(20:ncol(Dat))]
@@ -104,7 +104,7 @@ ProtMatrix_Olink <- ProtMatrix_Olink[which(Label_Olink$SampleType == "SAMPLE"),]
 Label_Olink <- Label_Olink[which(Label_Olink$SampleType == "SAMPLE"),]
 
 #LoD
-LoD <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/3_Limit_of_Detection/2_Olink_LoD/Olink_LOD.csv")
+LoD <- read.csv("Olink_LOD.csv")
 
 library(dplyr)
 df_unique <- LoD %>%
@@ -132,18 +132,18 @@ rm(ProtMatrix_Olink)
 
 #Thermo Fisher Data
 library(readr)
-Dat <- read_csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/4_Thermo_Fisher_Preprocessing/Thermo_Fisher_Merged_All.csv")
+Dat <- read_csv("Thermo_Fisher_Merged_All.csv")
 Label_Thermo_Fisher <- Dat[,c(1:10)]
 ProtMatrix_Thermo_Fisher <- Dat[,c(11:ncol(Dat))]
 rm(Dat)
 
-Dat <- read_csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/4_Thermo_Fisher_Preprocessing/Thermo_Fisher_Merged_All_Imputed.csv")
+Dat <- read_csv("Thermo_Fisher_Merged_All_Imputed.csv")
 Label_Thermo_Fisher2 <- Dat[,c(1:10)]
 ProtMatrix_Thermo_Fisher2 <- Dat[,c(11:ncol(Dat))]
 rm(Dat)
 
 #LoD
-LoD <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/3_Limit_of_Detection/3_Thermo_Fisher_Missingness/Thermo_Fisher_ProteinMissingness.csv")
+LoD <- read.csv("Thermo_Fisher_ProteinMissingness.csv")
 
 library(dplyr)
 df_unique <- LoD %>%
@@ -174,5 +174,6 @@ rm(Label_Thermo_Fisher)
 rm(ProtMatrix_Thermo_Fisher)
 rm(Label_Thermo_Fisher2)
 rm(ProtMatrix_Thermo_Fisher2)
+
 
 
