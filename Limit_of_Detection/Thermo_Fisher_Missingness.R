@@ -4,7 +4,7 @@
 #Data Loading
 
 #Thermo Fisher Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/4_Thermo_Fisher_Preprocessing/Thermo_Fisher_Merged_All.csv")
+Dat <- read.csv("Thermo_Fisher_Merged_All.csv")
 rownames(Dat) <- Dat$biosample_id
 Label <- Dat[,c(1:10)]
 ProtMatrix <- Dat[,c(11:ncol(Dat))]
@@ -12,7 +12,7 @@ min(ProtMatrix, na.rm = T)
 rm(Dat)
 
 #Protein Annotation
-Protein_Annotation <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/4_Thermo_Fisher_Preprocessing/Thermo_Fisher_Protein_Annotation_All.csv")
+Protein_Annotation <- read.csv("Thermo_Fisher_Protein_Annotation_All.csv")
 rownames(Protein_Annotation) <- Protein_Annotation$ProteinID
 
 #46
@@ -111,4 +111,5 @@ rm(Missing_Rate_Protein)
 #Remove All
 rm(list = ls())
 gc()
+
 
