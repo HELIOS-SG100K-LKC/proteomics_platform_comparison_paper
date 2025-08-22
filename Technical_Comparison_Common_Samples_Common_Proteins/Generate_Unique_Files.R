@@ -4,7 +4,7 @@
 #SomaLogic pre-ANML
 
 #SomaLogic Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/2_SomaLogic_pre-anml_Preprocessing/Somalogic_Merged_All.csv")
+Dat <- read.csv("SomaLogic_pre-anml_Preprocessing/Somalogic_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label_SomaLogic <- Dat[,c(1:20)]
 ProtMatrix_SomaLogic <- Dat[,c(21:ncol(Dat))]
@@ -15,14 +15,14 @@ Label_SomaLogic <- Label_SomaLogic[which(Label_SomaLogic$SampleType == "Sample")
 ProtMatrix_SomaLogic <- log2(ProtMatrix_SomaLogic)
 
 #Analyte Annotation
-Analyte_Annotation_SomaLogic <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/2_SomaLogic_pre-anml_Preprocessing/Somalogic_Analyte_Annotation_All.csv")
+Analyte_Annotation_SomaLogic <- read.csv("SomaLogic_pre-anml_Preprocessing/Somalogic_Analyte_Annotation_All.csv")
 rownames(Analyte_Annotation_SomaLogic) <- Analyte_Annotation_SomaLogic$SeqId
 
 colnames(ProtMatrix_SomaLogic) <- Analyte_Annotation_SomaLogic$SeqId
 rm(Analyte_Annotation_SomaLogic)
 
 #LoD
-LoD <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/3_Limit_of_Detection/4_SomaLogic_pre-ANML_LoD/Somalogic_LOD.csv")
+LoD <- read.csv("SomaLogic_pre-ANML_LoD/Somalogic_LOD.csv")
 
 library(dplyr)
 df_unique <- LoD %>%
@@ -49,7 +49,7 @@ rm(ProtMatrix_SomaLogic)
 #SomaLogic ANML
 
 #SomaLogic Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/1_SomaLogic_anml_Preprocessing/Somalogic_Merged_All.csv")
+Dat <- read.csv("Somalogic_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label_SomaLogic <- Dat[,c(1:20)]
 ProtMatrix_SomaLogic <- Dat[,c(21:ncol(Dat))]
@@ -174,4 +174,5 @@ rm(Label_Thermo_Fisher)
 rm(ProtMatrix_Thermo_Fisher)
 rm(Label_Thermo_Fisher2)
 rm(ProtMatrix_Thermo_Fisher2)
+
 
