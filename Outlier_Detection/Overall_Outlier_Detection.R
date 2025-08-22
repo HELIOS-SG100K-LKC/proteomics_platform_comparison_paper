@@ -4,7 +4,7 @@
 #SomaLogic pre-ANML
 
 #SomaLogic Data
-Dat <- read.csv("Somalogic_Merged_All.csv")
+Dat <- read.csv("SomaLogic_pre-anml_Preprocessing/Somalogic_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label <- Dat[,c(1:20)]
 ProtMatrix <- Dat[,c(21:ncol(Dat))]
@@ -146,7 +146,7 @@ rm(p3)
 #SomaLogic ANML
 
 #SomaLogic Data
-Dat <- read.csv("SomaLogic_anml_Preprocessing/Somalogic_Merged_All.csv")
+Dat <- read.csv("Somalogic_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label <- Dat[,c(1:20)]
 ProtMatrix <- Dat[,c(21:ncol(Dat))]
@@ -531,5 +531,6 @@ rm(p1)
 rm(p2)
 rm(p3)
 gc()
+
 
 
