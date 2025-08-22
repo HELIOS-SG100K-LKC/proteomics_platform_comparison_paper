@@ -4,14 +4,14 @@
 #Data Loading
 
 #Olink Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/3_Olink_Intensity_Preprocessing/Olink_Merged_All.csv")
+Dat <- read.csv("Olink_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label <- Dat[,c(1:19)]
 ProtMatrix <- Dat[,c(20:ncol(Dat))]
 rm(Dat)
 
 #Assay Annotation
-Assay_Annotation <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/3_Olink_Intensity_Preprocessing/Olink_Assay_Annotation_All.csv")
+Assay_Annotation <- read.csv("Olink_Assay_Annotation_All.csv")
 rownames(Assay_Annotation) <- Assay_Annotation$OlinkID
 
 #Remove Control Samples
@@ -32,7 +32,7 @@ library(OlinkAnalyze)
 library(arrow)
 
 #Data Loading
-my_NPX_data <- as.data.frame(read_NPX("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/3_Olink_Intensity_Preprocessing/Q-14739_Chambers_NPX_2024-08-05.parquet"))
+my_NPX_data <- as.data.frame(read_NPX("Q-14739_Chambers_NPX_2024-08-05.parquet"))
 
 #LOD
 my_NPX_data <- olink_lod(my_NPX_data, lod_method = "NCLOD")
@@ -537,4 +537,5 @@ gc()
 #Remove All
 rm(list = ls())
 gc()
+
 
