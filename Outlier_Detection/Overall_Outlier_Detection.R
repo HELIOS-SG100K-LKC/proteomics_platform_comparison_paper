@@ -4,7 +4,7 @@
 #SomaLogic pre-ANML
 
 #SomaLogic Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/2_SomaLogic_pre-anml_Preprocessing/Somalogic_Merged_All.csv")
+Dat <- read.csv("Somalogic_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label <- Dat[,c(1:20)]
 ProtMatrix <- Dat[,c(21:ncol(Dat))]
@@ -146,7 +146,7 @@ rm(p3)
 #SomaLogic ANML
 
 #SomaLogic Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/1_SomaLogic_anml_Preprocessing/Somalogic_Merged_All.csv")
+Dat <- read.csv("SomaLogic_anml_Preprocessing/Somalogic_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label <- Dat[,c(1:20)]
 ProtMatrix <- Dat[,c(21:ncol(Dat))]
@@ -288,7 +288,7 @@ rm(p3)
 #Olink
 
 #Olink Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/3_Olink_Intensity_Preprocessing/Olink_Merged_All.csv")
+Dat <- read.csv("Olink_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label <- Dat[,c(1:19)]
 ProtMatrix <- Dat[,c(20:ncol(Dat))]
@@ -413,7 +413,7 @@ rm(p3)
 #Thermo Fisher
 
 #Thermo Fisher Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/4_Thermo_Fisher_Preprocessing/Thermo_Fisher_Merged_All_Imputed.csv")
+Dat <- read.csv("Thermo_Fisher_Merged_All_Imputed.csv")
 rownames(Dat) <- Dat$biosample_id
 Label <- Dat[,c(1:10)]
 ProtMatrix <- Dat[,c(11:ncol(Dat))]
@@ -531,4 +531,5 @@ rm(p1)
 rm(p2)
 rm(p3)
 gc()
+
 
