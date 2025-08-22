@@ -9,14 +9,14 @@ Overall_Proportion <- vector()
 #SomaLogic pre-ANML
 
 #SomaLogic Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/2_SomaLogic_pre-anml_Preprocessing/Somalogic_Merged_All.csv")
+Dat <- read.csv("SomaLogic_pre-anml_Preprocessing/Somalogic_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label <- Dat[,c(1:20)]
 ProtMatrix <- Dat[,c(21:ncol(Dat))]
 rm(Dat)
 
 #Analyte Annotation
-Analyte_Annotation <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/2_SomaLogic_pre-anml_Preprocessing/Somalogic_Analyte_Annotation_All.csv")
+Analyte_Annotation <- read.csv("SomaLogic_pre-anml_Preprocessing/Somalogic_Analyte_Annotation_All.csv")
 rownames(Analyte_Annotation) <- Analyte_Annotation$AptName
 
 #Remove Control Samples and Retain Buffer Samples
@@ -133,14 +133,14 @@ gc()
 #SomaLogic ANML
 
 #SomaLogic Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/1_SomaLogic_anml_Preprocessing/Somalogic_Merged_All.csv")
+Dat <- read.csv("Somalogic_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label <- Dat[,c(1:20)]
 ProtMatrix <- Dat[,c(21:ncol(Dat))]
 rm(Dat)
 
 #Analyte Annotation
-Analyte_Annotation <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/1_SomaLogic_anml_Preprocessing/Somalogic_Analyte_Annotation_All.csv")
+Analyte_Annotation <- read.csv("Somalogic_Analyte_Annotation_All.csv")
 rownames(Analyte_Annotation) <- Analyte_Annotation$AptName
 
 #Remove Control Samples and Retain Buffer Samples
@@ -257,14 +257,14 @@ gc()
 #Olink
 
 #Olink Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/3_Olink_Intensity_Preprocessing/Olink_Merged_All.csv")
+Dat <- read.csv("Olink_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label <- Dat[,c(1:19)]
 ProtMatrix <- Dat[,c(20:ncol(Dat))]
 rm(Dat)
 
 #Assay Annotation
-Assay_Annotation <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/3_Olink_Intensity_Preprocessing/Olink_Assay_Annotation_All.csv")
+Assay_Annotation <- read.csv("Olink_Assay_Annotation_All.csv")
 rownames(Assay_Annotation) <- Assay_Annotation$OlinkID
 
 #Remove Control Samples
@@ -285,7 +285,7 @@ library(OlinkAnalyze)
 library(arrow)
 
 #Data Loading
-my_NPX_data <- as.data.frame(read_NPX("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/3_Olink_Intensity_Preprocessing/Q-14739_Chambers_NPX_2024-08-05.parquet"))
+my_NPX_data <- as.data.frame(read_NPX("Q-14739_Chambers_NPX_2024-08-05.parquet"))
 
 #LOD
 my_NPX_data <- olink_lod(my_NPX_data, lod_method = "NCLOD")
@@ -381,7 +381,7 @@ gc()
 #Thermo Fisher
 
 #Thermo Fisher Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/4_Thermo_Fisher_Preprocessing/Thermo_Fisher_Merged_All.csv")
+Dat <- read.csv("Thermo_Fisher_Merged_All.csv")
 rownames(Dat) <- Dat$biosample_id
 Label <- Dat[,c(1:10)]
 ProtMatrix <- Dat[,c(11:ncol(Dat))]
@@ -389,7 +389,7 @@ min(ProtMatrix, na.rm = T)
 rm(Dat)
 
 #Protein Annotation
-Protein_Annotation <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/4_Thermo_Fisher_Preprocessing/Thermo_Fisher_Protein_Annotation_All.csv")
+Protein_Annotation <- read.csv("Thermo_Fisher_Protein_Annotation_All.csv")
 rownames(Protein_Annotation) <- Protein_Annotation$ProteinID
 
 #46
@@ -531,8 +531,8 @@ gc()
 
 
 #pre-ANML & ANMl Stratification by Sets
-pre <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/3_Limit_of_Detection/4_SomaLogic_pre-ANML_LoD/Sample_Missingness_pre-ANML_Sets.csv")
-ANML <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/3_Limit_of_Detection/1_SomaLogic_LoD/Sample_Missingness_ANML_Sets.csv")
+pre <- read.csv("Sample_Missingness_pre-ANML_Sets.csv")
+ANML <- read.csv("Sample_Missingness_ANML_Sets.csv")
 Data <- rbind(pre, ANML)
 
 library(ggplot2)
@@ -556,8 +556,8 @@ rm(ANML)
 rm(Data)
 
 #pre-ANML & ANMl Stratification by Sets
-pre <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/3_Limit_of_Detection/4_SomaLogic_pre-ANML_LoD/Protein_Missingness_pre-ANML_Sets.csv")
-ANML <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/3_Limit_of_Detection/1_SomaLogic_LoD/Protein_Missingness_ANML_Sets.csv")
+pre <- read.csv("Protein_Missingness_pre-ANML_Sets.csv")
+ANML <- read.csv("Protein_Missingness_ANML_Sets.csv")
 Data <- rbind(pre, ANML)
 
 library(ggplot2)
@@ -583,8 +583,8 @@ rm(Data)
 
 
 #pre-ANML & ANMl Stratification by Dilutions
-pre <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/3_Limit_of_Detection/4_SomaLogic_pre-ANML_LoD/Sample_Missingness_pre-ANML_Dilution.csv")
-ANML <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/3_Limit_of_Detection/1_SomaLogic_LoD/Sample_Missingness_ANML_Dilution.csv")
+pre <- read.csv("Sample_Missingness_pre-ANML_Dilution.csv")
+ANML <- read.csv("Sample_Missingness_ANML_Dilution.csv")
 Data <- rbind(pre, ANML)
 Data$Class[which(Data$Class == "1:5")] <- "1.1:5"
 Data$Class[which(Data$Class == "1:200")] <- "2.1:200"
@@ -611,8 +611,8 @@ rm(ANML)
 rm(Data)
 
 #pre-ANML & ANMl Stratification by Dilutions
-pre <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/3_Limit_of_Detection/4_SomaLogic_pre-ANML_LoD/Protein_Missingness_pre-ANML_Dilution.csv")
-ANML <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/3_Limit_of_Detection/1_SomaLogic_LoD/Protein_Missingness_ANML_Dilution.csv")
+pre <- read.csv("Protein_Missingness_pre-ANML_Dilution.csv")
+ANML <- read.csv("Protein_Missingness_ANML_Dilution.csv")
 Data <- rbind(pre, ANML)
 Data$Set[which(Data$Set == "1:5")] <- "1.1:5"
 Data$Set[which(Data$Set == "1:200")] <- "2.1:200"
@@ -638,4 +638,5 @@ ggplot(data = Data, aes(x = Normalization, y = Rate, fill = Set, color = Set)) +
 rm(pre)
 rm(ANML)
 rm(Data)
+
 
