@@ -4,14 +4,14 @@
 #Data Loading
 
 #SomaLogic Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/1_SomaLogic_anml_Preprocessing/Somalogic_Merged_All.csv")
+Dat <- read.csv("Somalogic_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label <- Dat[,c(1:20)]
 ProtMatrix <- Dat[,c(21:ncol(Dat))]
 rm(Dat)
 
 #Analyte Annotation
-Analyte_Annotation <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/1_SomaLogic_anml_Preprocessing/Somalogic_Analyte_Annotation_All.csv")
+Analyte_Annotation <- read.csv("Somalogic_Analyte_Annotation_All.csv")
 rownames(Analyte_Annotation) <- Analyte_Annotation$AptName
 
 #Remove Control Samples
@@ -74,7 +74,7 @@ rm(ProtMatrix_Tech)
 
 
 #Stratify by LoD
-LOD_SomaLogic <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/3_Limit_of_Detection/1_SomaLogic_LoD/SomaLogic_LOD.csv")
+LOD_SomaLogic <- read.csv("SomaLogic_LOD.csv")
 identical(LOD_SomaLogic$SeqID, Analyte_Annotation$SeqId)
 
 #Intra
@@ -173,4 +173,5 @@ rm(ProtMatrix)
 rm(Label)
 rm(Analyte_Annotation)
 gc()
+
 
