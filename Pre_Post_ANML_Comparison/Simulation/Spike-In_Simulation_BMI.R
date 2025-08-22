@@ -4,14 +4,14 @@
 #Data Preparation
 
 #SomaLogic pre-ANML Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/2_SomaLogic_pre-anml_Preprocessing/Somalogic_Merged_All.csv")
+Dat <- read.csv("SomaLogic_pre-anml_Preprocessing/Somalogic_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label <- Dat[,c(1:20)]
 ProtMatrix <- Dat[,c(21:ncol(Dat))]
 rm(Dat)
 
 #Analyte Annotation
-Analyte_Annotation <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/2_SomaLogic_pre-anml_Preprocessing/Somalogic_Analyte_Annotation_All.csv")
+Analyte_Annotation <- read.csv("SomaLogic_pre-anml_Preprocessing/Somalogic_Analyte_Annotation_All.csv")
 rownames(Analyte_Annotation) <- Analyte_Annotation$AptName
 
 #Remove Control Samples
@@ -35,7 +35,7 @@ ProtMatrix <- ProtMatrix[,which(Analyte_Annotation$Dilution2 == 1/5)]
 Analyte_Annotation <- Analyte_Annotation[which(Analyte_Annotation$Dilution2 == 1/5),]
 
 #Phenotypes
-Phenotype <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/6_Other_Analysis/1_Demographics/HELIOS_Core_v4.csv")
+Phenotype <- read.csv("HELIOS_Core_v4.csv")
 Phenotype <- Phenotype[which(Phenotype$FREG0_PID %in% Label$FREG0_PID),]
 Phenotype <- Phenotype[which(Phenotype$FREG14_Visit_number == "1"),]
 Phenotype$BMI <- Phenotype$DBI14_Weight/((Phenotype$DBI13_Height/100)^2)
@@ -426,4 +426,5 @@ write.csv(Simulated_Protein, file = "Simulated_Protein_BMI.csv", row.names = TRU
 rm(Simulated_Protein)
 rm(DF)
 gc()
+
 
