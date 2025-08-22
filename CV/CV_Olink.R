@@ -4,14 +4,14 @@
 #Data Loading
 
 #Olink Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/3_Olink_Intensity_Preprocessing/Olink_Merged_All.csv")
+Dat <- read.csv("Olink_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label <- Dat[,c(1:19)]
 ProtMatrix <- Dat[,c(20:ncol(Dat))]
 rm(Dat)
 
 #Assay Annotation
-Assay_Annotation <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/3_Olink_Intensity_Preprocessing/Olink_Assay_Annotation_All.csv")
+Assay_Annotation <- read.csv("Olink_Assay_Annotation_All.csv")
 rownames(Assay_Annotation) <- Assay_Annotation$OlinkID
 
 #Remove Control Samples
@@ -70,7 +70,7 @@ rm(ProtMatrix_Tech)
 
 
 #Stratify by LoD
-LOD_Olink <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/3_Limit_of_Detection/2_Olink_LoD/Olink_LOD.csv")
+LOD_Olink <- read.csv("Olink_LOD.csv")
 identical(LOD_Olink$OlinkID, Assay_Annotation$OlinkID)
 
 #Intra
@@ -214,4 +214,5 @@ rm(Assay_Annotation)
 rm(Label)
 rm(ProtMatrix)
 gc()
+
 
