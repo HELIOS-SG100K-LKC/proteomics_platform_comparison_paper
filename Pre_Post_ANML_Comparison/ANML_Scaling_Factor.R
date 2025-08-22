@@ -2,7 +2,7 @@
 
 
 #ANML Scaling Factors
-ANML_Scaling_Factors <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/6_Other_Analysis/2_SomaLogic_Comparison_anml_pre-anml/2_ANML_Scaling_Factor_Generation/Somalogic_ANML_Scaling_Factor.csv")
+ANML_Scaling_Factors <- read.csv("Somalogic_ANML_Scaling_Factor.csv")
 Index <- intersect(which(ANML_Scaling_Factors$tech_rep_id == "N"), which(ANML_Scaling_Factors$bio_rep_id == "N"))
 Index <- union(Index, which(ANML_Scaling_Factors$tech_rep == 1))
 ANML_Scaling_Factors <- ANML_Scaling_Factors[Index,]
@@ -10,7 +10,7 @@ rm(Index)
 rownames(ANML_Scaling_Factors) <- ANML_Scaling_Factors$FREG0_PID
 
 #Phenotypes
-Phenotype <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/6_Other_Analysis/1_Demographics/HELIOS_Core_v4.csv")
+Phenotype <- read.csv("HELIOS_Core_v4.csv")
 Phenotype <- Phenotype[which(Phenotype$FREG0_PID %in% ANML_Scaling_Factors$FREG0_PID),]
 Phenotype <- Phenotype[which(Phenotype$FREG14_Visit_number == "1"),]
 rownames(Phenotype) <- Phenotype$FREG0_PID
@@ -23,7 +23,7 @@ Phenotype$DBP <- (Phenotype$DBP12_Dbp_1 + Phenotype$DBP13_Dbp_2 + Phenotype$DBP1
 Phenotype$HR <- (Phenotype$DBP15_Hr_1 + Phenotype$DBP16_Hr_2 + Phenotype$DBP17_Hr_3) / 3
 
 #Phenotypes 2
-Phenotype2 <- as.data.frame(readxl::read_xlsx("D:/PhD Thesis/Multi-Platform Proteomics Comparison/6_Other_Analysis/1_Demographics/HELIOS_DXA1_Hip_Lumbar.xlsx"))
+Phenotype2 <- as.data.frame(readxl::read_xlsx("HELIOS_DXA1_Hip_Lumbar.xlsx"))
 Phenotype2 <- Phenotype2[which(Phenotype2$FREG0_PID %in% ANML_Scaling_Factors$FREG0_PID),]
 Phenotype2 <- Phenotype2[which(Phenotype2$FREG14_Visit_number == "1"),]
 rownames(Phenotype2) <- Phenotype2$FREG0_PID
@@ -282,5 +282,6 @@ rm(mycolors)
 
 rm(ANML_Scaling_Factors, Phenotype)
 gc()
+
 
 
