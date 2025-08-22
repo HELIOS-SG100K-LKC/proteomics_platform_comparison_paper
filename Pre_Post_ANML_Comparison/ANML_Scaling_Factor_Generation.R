@@ -3,14 +3,14 @@
 #Pre-ANML
 
 #SomaLogic Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/2_SomaLogic_pre-anml_Preprocessing/Somalogic_Merged_All.csv")
+Dat <- read.csv("SomaLogic_pre-anml_Preprocessing/Somalogic_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label <- Dat[,c(1:20)]
 ProtMatrix <- Dat[,c(21:ncol(Dat))]
 rm(Dat)
 
 #Analyte Annotation
-Analyte_Annotation <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/2_SomaLogic_pre-anml_Preprocessing/Somalogic_Analyte_Annotation_All.csv")
+Analyte_Annotation <- read.csv("SomaLogic_pre-anml_Preprocessing/Somalogic_Analyte_Annotation_All.csv")
 rownames(Analyte_Annotation) <- Analyte_Annotation$AptName
 
 #Remove Control Samples
@@ -20,14 +20,14 @@ Label <- Label[which(Label$SampleType == "Sample"),]
 #ANML
 
 #SomaLogic Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/1_SomaLogic_anml_Preprocessing/Somalogic_Merged_All.csv")
+Dat <- read.csv("Somalogic_Merged_All.csv")
 rownames(Dat) <- Dat$UniqueID
 Label2 <- Dat[,c(1:20)]
 ProtMatrix2 <- Dat[,c(21:ncol(Dat))]
 rm(Dat)
 
 #Analyte Annotation
-Analyte_Annotation2 <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/1_SomaLogic_anml_Preprocessing/Somalogic_Analyte_Annotation_All.csv")
+Analyte_Annotation2 <- read.csv("Somalogic_Analyte_Annotation_All.csv")
 rownames(Analyte_Annotation2) <- Analyte_Annotation2$AptName
 
 #Remove Control Samples
@@ -79,3 +79,4 @@ rm(Label2)
 rm(Analyte_Annotation)
 rm(Analyte_Annotation2)
 gc()
+
