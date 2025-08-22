@@ -2,7 +2,7 @@
 
 
 #Thermo Fisher Data
-Dat <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/4_Thermo_Fisher_Preprocessing/Thermo_Fisher_Merged_All_Imputed.csv")
+Dat <- read.csv("Thermo_Fisher_Merged_All_Imputed.csv")
 rownames(Dat) <- Dat$biosample_id
 Label <- Dat[,c(1:10)]
 ProtMatrix <- Dat[,c(11:ncol(Dat))]
@@ -10,7 +10,7 @@ min(ProtMatrix, na.rm = T)
 rm(Dat)
 
 #Protein Annotation
-Protein_Annotation <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/1_Preprocessing/4_Thermo_Fisher_Preprocessing/Thermo_Fisher_Protein_Annotation_All.csv")
+Protein_Annotation <- read.csv("Thermo_Fisher_Protein_Annotation_All.csv")
 rownames(Protein_Annotation) <- Protein_Annotation$ProteinID
 
 #Overall Correlation between Technical Replicates
@@ -51,7 +51,7 @@ rm(Mean_Cor_Thermo_Fisher_Tech)
 
 
 #Stratify by LoD
-Missingness <- read.csv("D:/PhD Thesis/Multi-Platform Proteomics Comparison/3_Limit_of_Detection/3_Thermo_Fisher_Missingness/Thermo_Fisher_ProteinMissingness.csv")
+Missingness <- read.csv("Thermo_Fisher_ProteinMissingness.csv")
 
 #Tech 1
 G1 <- which(Missingness$Missing_Rate_Protein <= 0.2)
@@ -240,4 +240,5 @@ rm(ProtMatrix)
 rm(Label)
 rm(Protein_Annotation)
 gc()
+
 
