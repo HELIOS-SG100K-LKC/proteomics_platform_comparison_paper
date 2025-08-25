@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 # Navigate to your working directory
@@ -46,3 +47,11 @@ export -f fine_map
 
 # Run in parallel for all entries (adjust range if needed)
 parallel -j 10 fine_map ::: {1..305}
+
+
+## Combine Results from All  protein-snp pairs to single file (Use the .cs file output)
+
+while read F
+do 
+awk 'BEGIN {OFS = "\t"} NR>1{print "'{F}'",$0}' >>result-dir/All_cs_file.txt
+done <protein_snp_file.txt ## File containinng protein-snp pairwise IDs
